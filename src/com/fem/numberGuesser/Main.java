@@ -1,12 +1,31 @@
-import java.util.*;
+package com.fem.numberGuesser;
+
+import java.util.Scanner;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        boolean playAgain = true;
+
+        while (playAgain) {
+            playNumberGuesserGame(in);
+
+            System.out.println("Would you like to play again? Y/N");
+            String response = in.next();
+            playAgain = response.equalsIgnoreCase("y");
+        }
+
+        System.out.println("Thanks for playing!");
+
+        in.close();
+    }
+
+    public static void playNumberGuesserGame(Scanner in) {
         Random rand = new Random();
         int randomNumber = rand.nextInt(100) + 1;
         int numberOfTries = 0;
-
-        Scanner in = new Scanner(System.in);
 
         boolean win = false;
 
